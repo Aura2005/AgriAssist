@@ -1,3 +1,142 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "rice",
+      "description": "A lush green paddy field with rows of rice plants.",
+      "imageUrl": "https://images.unsplash.com/photo-1658898359527-f799c7784c8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxyaWNlJTIwcGFkZHl8ZW58MHx8fHwxNzY1ODgxNDM2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rice paddy"
+    },
+    {
+      "id": "maize",
+      "description": "Tall maize plants with developing cobs in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1649665612550-df97d3cc7de1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYWl6ZSUyMGZpZWxkfGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "maize field"
+    },
+    {
+      "id": "jute",
+      "description": "A dense field of tall, green jute stalks.",
+      "imageUrl": "https://images.unsplash.com/photo-1759050427122-eaeb5885eaf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxqdXRlJTIwcGxhbnR8ZW58MHx8fHwxNzY1ODgzODAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jute plant"
+    },
+    {
+      "id": "cotton",
+      "description": "Cotton plant with fluffy white bolls ready for harvest.",
+      "imageUrl": "https://images.unsplash.com/photo-1519356162333-4d49ceade668?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb3R0b24lMjBwbGFudHxlbnwwfHx8fDE3NjU4MjY2MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cotton plant"
+    },
+    {
+      "id": "coconut",
+      "description": "Tall coconut palm trees against a blue sky.",
+      "imageUrl": "https://images.unsplash.com/photo-1518766492976-82c449b7d616?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2NvbnV0JTIwdHJlZXxlbnwwfHx8fDE3NjU4ODM4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coconut tree"
+    },
+    {
+      "id": "papaya",
+      "description": "A papaya tree with several large, ripening fruits.",
+      "imageUrl": "https://images.unsplash.com/photo-1635742960698-e9c31e6210b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwYXBheWElMjB0cmVlfGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "papaya tree"
+    },
+    {
+      "id": "orange",
+      "description": "An orange tree laden with bright, ripe oranges.",
+      "imageUrl": "https://images.unsplash.com/photo-1465845075873-957c8326f63e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxvcmFuZ2UlMjB0cmVlfGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orange tree"
+    },
+    {
+      "id": "apple",
+      "description": "An apple orchard with red apples hanging from the branches.",
+      "imageUrl": "https://images.unsplash.com/photo-1600752085601-1ec2646cd736?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhcHBsZSUyMG9yY2hhcmR8ZW58MHx8fHwxNzY1ODgzODAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "apple orchard"
+    },
+    {
+      "id": "muskmelon",
+      "description": "Muskmelons growing on vines in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1737296717447-ba0ee21ede2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtdXNrbWVsb24lMjB2aW5lfGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "muskmelon vine"
+    },
+    {
+      "id": "watermelon",
+      "description": "Large watermelons resting on the ground in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1652031552021-50bcc01121a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3YXRlcm1lbG9uJTIwcGF0Y2h8ZW58MHx8fHwxNzY1ODgzODAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "watermelon patch"
+    },
+    {
+      "id": "grapes",
+      "description": "Bunches of ripe grapes hanging from a vine.",
+      "imageUrl": "https://images.unsplash.com/photo-1600889079891-627ecda9b0eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxncmFwZSUyMHZpbmV5YXJkfGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "grape vineyard"
+    },
+    {
+      "id": "mango",
+      "description": "A mango tree with hanging ripe mangoes.",
+      "imageUrl": "https://images.unsplash.com/photo-1622955658214-d05c1c6fcf84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW5nbyUyMHRyZWV8ZW58MHx8fHwxNzY1ODAxNzEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mango tree"
+    },
+    {
+      "id": "banana",
+      "description": "A banana plant with a large bunch of bananas.",
+      "imageUrl": "https://images.unsplash.com/photo-1653481006620-dbb70963c713?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxiYW5hbmElMjBwbGFudHxlbnwwfHx8fDE3NjU4ODM4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "banana plant"
+    },
+    {
+      "id": "pomegranate",
+      "description": "A pomegranate branch with ripe red fruits.",
+      "imageUrl": "https://images.unsplash.com/photo-1636634244011-f76ae6d379f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwb21lZ3JhbmF0ZSUyMGZydWl0fGVufDB8fHx8MTc2NTg2ODk2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pomegranate fruit"
+    },
+    {
+      "id": "lentil",
+      "description": "Lentil plants growing in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1656342322221-65fcb2e46932?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsZW50aWwlMjBmaWVsZHxlbnwwfHx8fDE3NjU4ODM4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lentil field"
+    },
+    {
+      "id": "blackgram",
+      "description": "Black gram plants in an agricultural field.",
+      "imageUrl": "https://images.unsplash.com/photo-1612634648015-b2b14e229a1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxibGFja2dyYW0lMjBwbGFudHxlbnwwfHx8fDE3NjU4ODM4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "blackgram plant"
+    },
+    {
+      "id": "mungbean",
+      "description": "Mung bean pods on a plant in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1701752557846-cfe903040e0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtdW5nYmVhbiUyMHBsYW50fGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mungbean plant"
+    },
+    {
+      "id": "mothbeans",
+      "description": "Moth bean plants growing in arid conditions.",
+      "imageUrl": "https://images.unsplash.com/photo-1689482296638-44e430dbe949?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb3RoYmVhbnMlMjBwbGFudHxlbnwwfHx8fDE3NjU4ODM4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mothbeans plant"
+    },
+    {
+      "id": "pigeonpeas",
+      "description": "Pigeon pea plants with pods in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1713298324937-1750e91cc7cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwaWdlb25wZWFzJTIwZmllbGR8ZW58MHx8fHwxNzY1ODgzODAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pigeonpeas field"
+    },
+    {
+      "id": "kidneybeans",
+      "description": "Kidney bean plants with developing pods.",
+      "imageUrl": "https://images.unsplash.com/photo-1685902987964-8539c274dae7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8a2lkbmV5YmVhbnMlMjBwbGFudHxlbnwwfHx8fDE3NjU4ODM4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "kidneybeans plant"
+    },
+    {
+      "id": "chickpea",
+      "description": "Chickpea plants with green pods in a field.",
+      "imageUrl": "https://images.unsplash.com/photo-1703998512335-3a0cdd75c6fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaGlja3BlYSUyMGZpZWxkfGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chickpea field"
+    },
+    {
+      "id": "coffee",
+      "description": "Coffee plant with red coffee cherries.",
+      "imageUrl": "https://images.unsplash.com/photo-1586095516671-d085ff58cdd4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2ZmZWUlMjBwbGFudHxlbnwwfHx8fDE3NjU4ODM4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coffee plant"
+    },
+    {
+      "id": "default",
+      "description": "A generic image of a farm or plant.",
+      "imageUrl": "https://images.unsplash.com/photo-1566405382187-a5937a822773?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxncmVlbiUyMHBsYW50fGVufDB8fHx8MTc2NTg4MzgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "green plant"
+    }
+  ]
 }
