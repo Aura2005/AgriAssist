@@ -10,10 +10,12 @@ import { Input } from '@/components/ui/input';
 import { Droplets, Loader2, Sparkles, Thermometer, Wind } from 'lucide-react';
 import { KIonIcon, NIonIcon, PHIcon, PIonIcon } from '../icons';
 import { Separator } from '../ui/separator';
+import { useEffect } from 'react';
 
 interface InputFormProps {
   onSubmit: (data: AgriAssistFormData) => void;
   isLoading: boolean;
+  initialValues?: Partial<AgriAssistFormData>;
 }
 
 const formFields: { name: keyof AgriAssistFormData; label: string; icon: React.ElementType; placeholder: string, unit: string }[] = [
@@ -27,24 +29,61 @@ const formFields: { name: keyof AgriAssistFormData; label: string; icon: React.E
 ];
 
 
-export function InputForm({ onSubmit, isLoading }: InputFormProps) {
+export function InputForm({ onSubmit, isLoading, initialValues }: InputFormProps) {
   const form = useForm<AgriAssistFormData>({
     resolver: zodResolver(AgriAssistFormSchema),
     defaultValues: {
-      nitrogen: 90,
-      phosphorus: 42,
-      potassium: 43,
-      temperature: 20.87,
-      humidity: 82.00,
-      ph: 6.50,
-      rainfall: 202.93,
+      nitrogen: undefined,
+      phosphorus: undefined,
+      potassium: undefined,
+      temperature: undefined,
+      humidity: undefined,
+      ph: undefined,
+      rainfall: undefined,
+      ...initialValues
     },
   });
+
+  useEffect(() => {
+    if(initialValues) {
+        form.reset({
+            nitrogen: undefined,
+            phosphorus: undefined,
+            potassium: undefined,
+            temperature: undefined,
+            humidity: undefined,
+            ph: undefined,
+            rainfall: undefined,
+            ...initialValues
+        })
+    }
+  }, [initialValues, form])
+
+  const defaultValues = {
+    nitrogen: 90,
+    phosphorus: 42,
+    potassium: 43,
+    temperature: 20.87,
+    humidity: 82.00,
+    ph: 6.50,
+    rainfall: 202.93,
+  };
+
+  const handleFormSubmit = (data: AgriAssistFormData) => {
+    const filledData = { ...defaultValues, ...data };
+    
+    for (const key in filledData) {
+        if (filledData[key as keyof AgriAssistFormData] === undefined || filledData[key as keyof AgriAssistFormData] === '') {
+            filledData[key as keyof AgriAssistFormData] = defaultValues[key as keyof AgriAssistFormData];
+        }
+    }
+    onSubmit(filledData);
+  }
 
   return (
     <Card className="w-full shadow-lg border-primary/20">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(handleFormSubmit)}>
           <CardHeader>
             <CardTitle className="font-headline text-2xl">Soil & Weather Conditions</CardTitle>
             <CardDescription>Enter the details below to get crop recommendations.</CardDescription>
@@ -64,7 +103,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
                       </FormLabel>
                       <div className="relative">
                         <FormControl>
-                          <Input type="number" step="0.01" placeholder={placeholder} {...field} className="pr-14"/>
+                          <Input type="number" step="0.01" placeholder={placeholder} {...field} value={field.value ?? ''} className="pr-14"/>
                         </FormControl>
                         {unit && <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">{unit}</span>}
                       </div>

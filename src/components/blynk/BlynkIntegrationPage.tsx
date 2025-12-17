@@ -25,7 +25,7 @@ type Status =
 interface BlynkState {
   status: Status;
   blynkToken: string;
-  formData: AgriAssistFormData | null;
+  formData: Partial<AgriAssistFormData> | null;
   cropResults: CropData[] | null;
   selectedCrop: CropData | null;
   fertilizerResults: FertilizerData[] | null;
@@ -68,17 +68,12 @@ export default function BlynkIntegrationPage() {
                 description: result.error,
             });
         } else {
-            // Fill missing data with default values from the main page
-            const partialFormData: AgriAssistFormData = {
-                nitrogen: 90,
-                phosphorus: 42,
-                potassium: 43,
-                temperature: result.data?.temperature ?? 20.87,
-                humidity: result.data?.humidity ?? 82.00,
-                ph: 6.50,
-                rainfall: result.data?.rainfall ?? 202.93,
-            };
-            setState(s => ({ ...s, status: 'blynkSuccess', formData: partialFormData, cropResults: null, fertilizerResults: null }));
+            const fetchedData: Partial<AgriAssistFormData> = {};
+            if(result.data?.temperature !== undefined) fetchedData.temperature = result.data.temperature;
+            if(result.data?.humidity !== undefined) fetchedData.humidity = result.data.humidity;
+            if(result.data?.rainfall !== undefined) fetchedData.rainfall = result.data.rainfall;
+            
+            setState(s => ({ ...s, status: 'blynkSuccess', formData: fetchedData, cropResults: null, fertilizerResults: null }));
             toast({
                 title: 'Success!',
                 description: 'Successfully fetched data from Blynk. You can now get recommendations.',
@@ -108,7 +103,7 @@ export default function BlynkIntegrationPage() {
     if (!state.formData) return;
     startTransition(async () => {
       setState(s => ({ ...s, status: 'loadingFertilizer', selectedCrop: crop, fertilizerResults: null }));
-      const result = await getFertilizerRecommendation(state.formData!, crop.crop);
+      const result = await getFertilizerRecommendation(state.formData as AgriAssistFormData, crop.crop);
       if (result.error) {
         setState(s => ({ ...s, status: 'error', error: result.error }));
         toast({
@@ -127,7 +122,6 @@ export default function BlynkIntegrationPage() {
   };
   
   const isLoading = state.status.startsWith('loading') || isTransitioning;
-  const showResults = state.status !== 'idle' && state.status !== 'loadingBlynk' && state.status !== 'manualInput' && !isLoading;
 
   return (
     <div className="space-y-8">
@@ -162,17 +156,21 @@ export default function BlynkIntegrationPage() {
             <span className="flex-shrink mx-4 text-muted-foreground text-sm">OR</span>
             <div className="flex-grow border-t border-muted"></div>
           </div>
-           <Button variant="secondary" onClick={() => setState(s => ({...s, status: 'manualInput', formData: null, cropResults: null, fertilizerResults: null}))} disabled={isLoading} className="w-full">
+           <Button variant="secondary" onClick={() => setState(s => ({...s, status: 'manualInput', formData: {}, cropResults: null, fertilizerResults: null}))} disabled={isLoading} className="w-full">
             Enter Data Manually
-          </Button>
+           </Button>
         </CardContent>
       </Card>
 
-      {(state.status === 'blynkSuccess' || state.status === 'manualInput') && state.formData && (
-        <InputForm onSubmit={handleFormSubmit} isLoading={isLoading} />
+      {(state.status === 'blynkSuccess' || state.status === 'manualInput') && (
+        <InputForm 
+          onSubmit={handleFormSubmit} 
+          isLoading={isLoading} 
+          initialValues={state.formData || {}}
+        />
       )}
 
-      {(state.status !== 'idle' && state.status !== 'loadingBlynk' && state.status !== 'manualInput') && (
+      {(state.status !== 'idle' && state.status !== 'loadingBlynk' && state.status !== 'manualInput' && state.status !== 'blynkSuccess') && (
         <RecommendationResults
           state={{
             status: state.status,
