@@ -1,0 +1,9 @@
+{
+  "hosting": {
+    "source": ".",
+    "backend": {
+      "id": "agriassist",
+      "region": "us-central1"
+    }
+  }
+}
