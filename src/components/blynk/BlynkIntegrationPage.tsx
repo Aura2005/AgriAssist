@@ -34,7 +34,7 @@ interface BlynkState {
 
 const initialState: BlynkState = {
   status: 'idle',
-  blynkToken: '',
+  blynkToken: 'rBx2c-9dpkwh2QYT1BpIO3eM_8_tLe5i',
   formData: null,
   cropResults: null,
   selectedCrop: null,
@@ -123,7 +123,7 @@ export default function BlynkIntegrationPage() {
   };
 
   const handleReset = () => {
-    setState(initialState);
+    setState(s => ({...initialState, blynkToken: s.blynkToken}));
   };
   
   const isLoading = state.status.startsWith('loading') || isTransitioning;
