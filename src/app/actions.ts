@@ -70,3 +70,29 @@ export async function saveFavoritePlant(plantName: string): Promise<{ success: b
     return { success: false, message: 'Failed to save favorite plant.' };
   }
 }
+
+export async function getBlynkData(blynkToken: string): Promise<{ data?: Partial<AgriAssistFormData>; error?: string }> {
+  const BLYNK_SERVER_URL = 'https://blynk.cloud/external/api';
+  const pins = ['v1', 'v2', 'v4']; // temp, humidity, rain
+
+  try {
+    const requests = pins.map(pin => 
+      fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pin}`)
+        .then(res => res.ok ? res.json() : Promise.reject(`Failed to fetch ${pin}`))
+    );
+
+    const results = await Promise.all(requests);
+    
+    const data: Partial<AgriAssistFormData> = {
+      temperature: results[0],
+      humidity: results[1],
+      rainfall: results[2],
+    };
+
+    return { data };
+
+  } catch (error) {
+    console.error("Blynk API error:", error);
+    return { error: 'Failed to fetch data from Blynk. Please check your token and device status.' };
+  }
+}
