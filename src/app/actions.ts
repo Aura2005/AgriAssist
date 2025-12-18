@@ -73,20 +73,28 @@ export async function saveFavoritePlant(plantName: string): Promise<{ success: b
 
 export async function getBlynkData(blynkToken: string): Promise<{ data?: Partial<AgriAssistFormData>; error?: string }> {
   const BLYNK_SERVER_URL = 'https://blynk.cloud/external/api';
-  const pins = ['v1', 'v2', 'v4']; // temp, humidity, rain
+  // V1: temperature, V2: humidity, V3: rain
+  const pins = {
+    temperature: 'v1',
+    humidity: 'v2',
+    rainfall: 'v3',
+  };
 
   try {
-    const requests = pins.map(pin => 
-      fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pin}`)
-        .then(res => res.ok ? res.json() : Promise.reject(`Failed to fetch ${pin}`))
-    );
+    const tempRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pins.temperature}`).then(res => res.ok ? res.json() : Promise.reject('Failed to fetch temperature'));
+    const humidityRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pins.humidity}`).then(res => res.ok ? res.json() : Promise.reject('Failed to fetch humidity'));
+    const rainfallRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pins.rainfall}`).then(res => res.ok ? res.json() : Promise.reject('Failed to fetch rainfall'));
 
-    const results = await Promise.all(requests);
+    const [temperature, humidity, rainfall] = await Promise.all([
+      tempRequest,
+      humidityRequest,
+      rainfallRequest
+    ]);
     
     const data: Partial<AgriAssistFormData> = {
-      temperature: results[0],
-      humidity: results[1],
-      rainfall: results[2],
+      temperature,
+      humidity,
+      rainfall,
     };
 
     return { data };
