@@ -4,8 +4,9 @@ import { persistFavoritePlants } from '@/ai/flows/persist-favorite-plants';
 import { AgriAssistFormData, CropData, FertilizerData } from '@/lib/types';
 
 const getApiUrl = (path: string) => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:9002';
-  return `${baseUrl}${path}`;
+  // Using a relative path allows this to work in any environment (local, Vercel, etc.)
+  // The browser will automatically use the current host.
+  return path;
 };
 
 
