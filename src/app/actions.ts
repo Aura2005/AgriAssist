@@ -81,9 +81,18 @@ export async function getBlynkData(blynkToken: string): Promise<{ data?: Partial
   };
 
   try {
-    const tempRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pins.temperature}`).then(res => res.ok ? res.json() : Promise.reject('Failed to fetch temperature'));
-    const humidityRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pins.humidity}`).then(res => res.ok ? res.json() : Promise.reject('Failed to fetch humidity'));
-    const rainfallRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&${pins.rainfall}`).then(res => res.ok ? res.json() : Promise.reject('Failed to fetch rainfall'));
+    const tempRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&pin=${pins.temperature}`).then(res => {
+        if (!res.ok) throw new Error('Failed to fetch temperature. Check if device is online.');
+        return res.json();
+    });
+    const humidityRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&pin=${pins.humidity}`).then(res => {
+        if (!res.ok) throw new Error('Failed to fetch humidity. Check if device is online.');
+        return res.json();
+    });
+    const rainfallRequest = fetch(`${BLYNK_SERVER_URL}/get?token=${blynkToken}&pin=${pins.rainfall}`).then(res => {
+        if (!res.ok) throw new Error('Failed to fetch rainfall. Check if device is online.');
+        return res.json();
+    });
 
     const [temperature, humidity, rainfall] = await Promise.all([
       tempRequest,
@@ -99,8 +108,9 @@ export async function getBlynkData(blynkToken: string): Promise<{ data?: Partial
 
     return { data };
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Blynk API error:", error);
-    return { error: 'Failed to fetch data from Blynk. Please check your token and device status.' };
+    const errorMessage = error instanceof Error ? error.message : 'Failed to fetch data from Blynk. Please check your token and device status.';
+    return { error: errorMessage };
   }
 }

@@ -76,7 +76,7 @@ export default function BlynkIntegrationPage() {
             setState(s => ({ ...s, status: 'blynkSuccess', formData: fetchedData, cropResults: null, fertilizerResults: null }));
             toast({
                 title: 'Success!',
-                description: 'Successfully fetched data from Blynk. You can now get recommendations.',
+                description: 'Successfully fetched all required values from Blynk.',
             });
         }
     });
